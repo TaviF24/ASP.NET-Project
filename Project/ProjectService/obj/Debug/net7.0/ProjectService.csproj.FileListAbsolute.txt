@@ -1,0 +1,12 @@
+/Users/octavianfarcasi/Desktop/ASP_NET/ASP.NET-Project/Project/ProjectService/bin/Debug/net7.0/ProjectService.deps.json
+/Users/octavianfarcasi/Desktop/ASP_NET/ASP.NET-Project/Project/ProjectService/bin/Debug/net7.0/ProjectService.dll
+/Users/octavianfarcasi/Desktop/ASP_NET/ASP.NET-Project/Project/ProjectService/bin/Debug/net7.0/ProjectService.pdb
+/Users/octavianfarcasi/Desktop/ASP_NET/ASP.NET-Project/Project/ProjectService/obj/Debug/net7.0/ProjectService.csproj.AssemblyReference.cache
+/Users/octavianfarcasi/Desktop/ASP_NET/ASP.NET-Project/Project/ProjectService/obj/Debug/net7.0/ProjectService.GeneratedMSBuildEditorConfig.editorconfig
+/Users/octavianfarcasi/Desktop/ASP_NET/ASP.NET-Project/Project/ProjectService/obj/Debug/net7.0/ProjectService.AssemblyInfoInputs.cache
+/Users/octavianfarcasi/Desktop/ASP_NET/ASP.NET-Project/Project/ProjectService/obj/Debug/net7.0/ProjectService.AssemblyInfo.cs
+/Users/octavianfarcasi/Desktop/ASP_NET/ASP.NET-Project/Project/ProjectService/obj/Debug/net7.0/ProjectService.csproj.CoreCompileInputs.cache
+/Users/octavianfarcasi/Desktop/ASP_NET/ASP.NET-Project/Project/ProjectService/obj/Debug/net7.0/ProjectService.dll
+/Users/octavianfarcasi/Desktop/ASP_NET/ASP.NET-Project/Project/ProjectService/obj/Debug/net7.0/refint/ProjectService.dll
+/Users/octavianfarcasi/Desktop/ASP_NET/ASP.NET-Project/Project/ProjectService/obj/Debug/net7.0/ProjectService.pdb
+/Users/octavianfarcasi/Desktop/ASP_NET/ASP.NET-Project/Project/ProjectService/obj/Debug/net7.0/ref/ProjectService.dll

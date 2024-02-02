@@ -1,4 +1,5 @@
 ﻿<Properties StartupConfiguration="{85B32694-6620-47DC-A088-E2D12DA33D3E}|https">
-  <MonoDevelop.Ide.ItemProperties.Project FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.Project PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.ProjectService FirstBuild="True" />
 </Properties>
