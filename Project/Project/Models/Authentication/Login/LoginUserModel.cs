@@ -2,7 +2,7 @@
 
 namespace Project.Models.Authentification.Login
 {
-	public class LoginModel
+	public class LoginUserModel
 	{
 		[Required(ErrorMessage = "Username or Email is required")]
 		public string? Username_or_Email { get; set; }

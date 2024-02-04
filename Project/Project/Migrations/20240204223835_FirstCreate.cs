@@ -7,7 +7,7 @@
 namespace Project.Migrations
 {
     /// <inheritdoc />
-    public partial class SecondCreate : Migration
+    public partial class FirstCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,26 +15,26 @@ namespace Project.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "2c9a2c87-fd4f-4a8b-8879-adc0ac2af86e");
+                keyValue: "0daecd1f-3f5e-4312-b778-bf993d86943d");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "9c594fe1-638e-4d77-8de9-1712ca25831e");
+                keyValue: "679dd71e-0b94-4f53-9d92-0f9c7520e792");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "ac6672a8-e19e-4302-886f-c84808660976");
+                keyValue: "dc330a13-4577-4957-bfee-ccee62dafc34");
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "053529c2-5152-442d-9c31-7bf43d13c2d8", "1", "Admin", "Admin" },
-                    { "93697d90-d92e-4a4b-83a0-e0d610cffc07", "2", "User", "User" },
-                    { "a759ab0d-0b83-4a49-bd2b-860fd2a14b52", "3", "HR", "HR" }
+                    { "407edf89-9b69-406a-8324-441b10c59ce1", "3", "HR", "HR" },
+                    { "65260eba-0fc5-4e80-8f57-aa95246a66ab", "1", "Admin", "Admin" },
+                    { "78fcc00a-6760-4cb7-964b-2797699e679c", "2", "User", "User" }
                 });
         }
 
@@ -44,26 +44,26 @@ namespace Project.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "053529c2-5152-442d-9c31-7bf43d13c2d8");
+                keyValue: "407edf89-9b69-406a-8324-441b10c59ce1");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "93697d90-d92e-4a4b-83a0-e0d610cffc07");
+                keyValue: "65260eba-0fc5-4e80-8f57-aa95246a66ab");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "a759ab0d-0b83-4a49-bd2b-860fd2a14b52");
+                keyValue: "78fcc00a-6760-4cb7-964b-2797699e679c");
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "2c9a2c87-fd4f-4a8b-8879-adc0ac2af86e", "3", "HR", "HR" },
-                    { "9c594fe1-638e-4d77-8de9-1712ca25831e", "1", "Admin", "Admin" },
-                    { "ac6672a8-e19e-4302-886f-c84808660976", "2", "User", "User" }
+                    { "0daecd1f-3f5e-4312-b778-bf993d86943d", "2", "User", "User" },
+                    { "679dd71e-0b94-4f53-9d92-0f9c7520e792", "3", "HR", "HR" },
+                    { "dc330a13-4577-4957-bfee-ccee62dafc34", "1", "Admin", "Admin" }
                 });
         }
     }

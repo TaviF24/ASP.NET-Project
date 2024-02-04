@@ -4,8 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Project.Data;
-using ProjectService.Models;
-using ProjectService.Services;
+using Project.Models.Email;
+using Project.Services.EmailService;
+using Project.Services.TokenService;
 using System.Text;
 
 
@@ -59,10 +60,16 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connecti
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
         .AddEntityFrameworkStores<AppDbContext>()
         .AddDefaultTokenProviders();
+        //.AddTokenProvider("MyApp", typeof(DataProtectorTokenProvider<IdentityUser>));
 
 //Add config for required email
 
 builder.Services.Configure<IdentityOptions>(options => options.SignIn.RequireConfirmedEmail = true);
+
+
+
+builder.Services.Configure<DataProtectionTokenProviderOptions>(opts => opts.TokenLifespan = TimeSpan.FromHours(10));
+
 
 
 //Adding authentification
@@ -80,9 +87,11 @@ builder.Services.AddAuthentication(options =>
     {
         ValidateIssuer = true,
         ValidateAudience = true,
+        ValidateLifetime = true,
         ValidAudience = builder.Configuration["JWT:ValidAudience"],
         ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"])),
+        ClockSkew = TimeSpan.Zero
     };
 
 });
@@ -96,6 +105,7 @@ builder.Services.AddSingleton(emailConfig);
 
 builder.Services.AddScoped<IEmailService, EmailService>();
 
+builder.Services.AddTransient<ITokenService, TokenService>();
 
 var app = builder.Build();
 

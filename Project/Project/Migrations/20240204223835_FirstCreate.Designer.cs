@@ -11,8 +11,8 @@ using Project.Data;
 namespace Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240202221430_SecondCreate")]
-    partial class SecondCreate
+    [Migration("20240204223835_FirstCreate")]
+    partial class FirstCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,21 +50,21 @@ namespace Project.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "053529c2-5152-442d-9c31-7bf43d13c2d8",
+                            Id = "65260eba-0fc5-4e80-8f57-aa95246a66ab",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "93697d90-d92e-4a4b-83a0-e0d610cffc07",
+                            Id = "78fcc00a-6760-4cb7-964b-2797699e679c",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "a759ab0d-0b83-4a49-bd2b-860fd2a14b52",
+                            Id = "407edf89-9b69-406a-8324-441b10c59ce1",
                             ConcurrencyStamp = "3",
                             Name = "HR",
                             NormalizedName = "HR"
@@ -218,7 +218,7 @@ namespace Project.Migrations
                     b.ToTable("AspNetUserRoles", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Project.Data.ApplicationUserToken", b =>
                 {
                     b.Property<string>("UserId")
                         .HasColumnType("varchar(255)");
@@ -229,12 +229,42 @@ namespace Project.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("varchar(255)");
 
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("Expires")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Value")
                         .HasColumnType("longtext");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Project.Models.RefreshToken", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("Expires")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -279,7 +309,7 @@ namespace Project.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Project.Data.ApplicationUserToken", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()

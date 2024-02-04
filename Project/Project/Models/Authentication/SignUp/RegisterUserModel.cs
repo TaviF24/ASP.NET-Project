@@ -2,7 +2,7 @@
 
 namespace Project.Models.Authentification.SignUp
 {
-	public class RegisterUser
+	public class RegisterUserModel
 	{
 		[Required(ErrorMessage = "Username is required")]
 		public string? Username { get; set; }

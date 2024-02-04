@@ -1,5 +1,45 @@
 ﻿<Properties StartupConfiguration="{85B32694-6620-47DC-A088-E2D12DA33D3E}|https">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Project/Models/Email/Message.cs">
+    <Files>
+      <File FileName="Project/Models/Response.cs" />
+      <File FileName="Project/Models/Authentication/SignUp/RegisterUser.cs" Line="6" Column="3" />
+      <File FileName="Project/Models/Authentication/Login/LoginModel.cs" Line="9" Column="1" />
+      <File FileName="Project/appsettings.json" Line="1" Column="1" />
+      <File FileName="Project/Program.cs" Line="8" Column="37" />
+      <File FileName="Project/Controllers/AuthenticationController.cs" Line="23" Column="11" />
+      <File FileName="Project/Controllers/AdminController.cs" Line="4" Column="30" />
+      <File FileName="Project/Models/Authentication/SignUp/ResetPassword.cs" Line="5" Column="33" />
+      <File FileName="Project/Models/RefreshToken.cs" Line="9" Column="40" />
+      <File FileName="Project/Models/Email/EmailConfiguration.cs" Line="9" Column="54" />
+      <File FileName="Project/Models/Email/Message.cs" Line="18" Column="31" />
+      <File FileName="Project/Services/EmailService/IEmailService.cs" Line="6" Column="3" />
+      <File FileName="Project/Services/EmailService/EmailService.cs" Line="49" Column="9" />
+      <File FileName="Project/Data/AppDbContext.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Project" expanded="True">
+            <Node name="Project">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Email" expanded="True">
+                  <Node name="Message.cs" selected="True" />
+                </Node>
+              </Node>
+              <Node name="Services" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Project PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.ProjectService FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
