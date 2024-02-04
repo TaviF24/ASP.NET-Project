@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Project.Models;
 
 namespace Project.Data
 {
@@ -23,8 +22,6 @@ namespace Project.Data
         ApplicationUserToken>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
-        public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         private static void SeedRoles(ModelBuilder builder)
         {
