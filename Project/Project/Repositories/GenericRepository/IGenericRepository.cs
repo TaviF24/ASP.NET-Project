@@ -1,4 +1,5 @@
-﻿using Project.Models.Base;
+﻿using Project.Models.AppModels;
+using Project.Models.Base;
 
 namespace Project.Repositories.GenericRepository
 {
@@ -53,6 +54,9 @@ namespace Project.Repositories.GenericRepository
         bool Save();
 
         Task<bool> SaveAsync();
+
+
+        public Task<UserProfile> GetUserProfile(string Id_or_disName);
 
     }
     

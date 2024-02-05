@@ -40,7 +40,7 @@ namespace Project.Controllers
         [Route("CreateProfile")]
         public async Task<IActionResult> CreateUserProfile(string Email, string DisplayedUserName, string? FirstName, string? LastName)
         {
-            if(await _userProfileService.CreateProfile(Email, DisplayedUserName, FirstName, LastName) == true)
+            if (await _userProfileService.CreateProfile(Email, DisplayedUserName, FirstName, LastName) == true)
                 return StatusCode(StatusCodes.Status200OK,
                     new Response { Status = "Succes", Message = "Profile created successfully" });
             return StatusCode(StatusCodes.Status500InternalServerError,
@@ -58,5 +58,16 @@ namespace Project.Controllers
                 new Response { Status = "Error", Message = "Error" });
         }
 
+
+        [HttpDelete]
+        [Route("DeleteProfile")]
+        public async Task<IActionResult> DeleteProfile(string DisplayedUserName_or_Id)
+        {
+            if (await _userProfileService.DeleteProfile(DisplayedUserName_or_Id) == true)
+                return StatusCode(StatusCodes.Status200OK,
+                    new Response { Status = "Succes", Message = "Profile updated successfully" });
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                new Response { Status = "Error", Message = "Error" });
+        }
     }
 }

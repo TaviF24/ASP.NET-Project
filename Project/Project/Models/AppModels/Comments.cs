@@ -2,7 +2,7 @@
 
 namespace Project.Models.AppModels
 {
-	public class Comments
+	public class Comments : BaseEntity
     {
         public string Text { get; set; }
 

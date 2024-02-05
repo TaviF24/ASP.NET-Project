@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Project.Data;
+using Project.Models.AppModels;
 using Project.Models.Base;
 
 
@@ -108,6 +109,16 @@ namespace Project.Repositories.GenericRepository
         public async Task<bool> SaveAsync()
         {
             return await _appDbContext.SaveChangesAsync() > 0;
+        }
+
+
+        public async Task<UserProfile> GetUserProfile(string Id_or_disName)
+        {
+            var userProfile = await _appDbContext.UserProfiles.FirstOrDefaultAsync(x => x.UserId == Id_or_disName || x.DisplayedUsername == Id_or_disName);
+            if (userProfile == null)
+                return null;
+            return userProfile;
+
         }
     }
 }

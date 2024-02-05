@@ -40,7 +40,6 @@ namespace Project.Repositories.UserProfileRepository
             return null;
         }
 
-
         public async Task<string>CheckUser(string email)
         {
             var user = await _appDbContext.Users.FirstOrDefaultAsync(x => x.Email == email);

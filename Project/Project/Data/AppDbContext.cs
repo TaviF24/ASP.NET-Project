@@ -57,7 +57,7 @@ namespace Project.Data
 
             //Many to Many
             modelBuilder.Entity<Comments>()
-                        .HasKey(com => new { com.UserProfileId, com.PostId });
+                        .HasKey(com => new { com.UserProfileId, com.PostId, com.Id });
             modelBuilder.Entity<Comments>()
                         .HasOne(usr => usr.UserProfile)
                         .WithMany(com => com.Comments)

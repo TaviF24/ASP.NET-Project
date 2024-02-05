@@ -11,8 +11,8 @@ using Project.Data;
 namespace Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240205180453_SecondCreate")]
-    partial class SecondCreate
+    [Migration("20240205212050_FirstCreate")]
+    partial class FirstCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,21 +50,21 @@ namespace Project.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "96dfd7a3-3c6c-4d18-a319-7aafe15f81ac",
+                            Id = "65d2406f-d8a4-44ea-b8e5-9771b7e26ae3",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "e6ea9c18-48bd-4153-bce0-97408212e119",
+                            Id = "752c5367-ad91-496c-b2be-90e053fa5638",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "4b9709ab-df7f-40a0-bb2c-1a0e46e1229d",
+                            Id = "984cb28b-b20c-44f9-940b-8a039975363d",
                             ConcurrencyStamp = "3",
                             Name = "HR",
                             NormalizedName = "HR"
@@ -162,14 +162,24 @@ namespace Project.Migrations
                     b.Property<Guid>("PostId")
                         .HasColumnType("char(36)");
 
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
                     b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DateCreated")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DateModified")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("UserProfileId", "PostId");
+                    b.HasKey("UserProfileId", "PostId", "Id");
 
                     b.HasIndex("PostId");
 

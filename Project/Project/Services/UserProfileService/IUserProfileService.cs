@@ -12,6 +12,8 @@ namespace Project.Services.UserProfileService
 
         public Task<bool> UpdateProfile(string DisName_or_Id, string newDisName, string newFirstName, string newLastName);
 
+        public Task<bool> DeleteProfile(string DisName_or_Id);
+
     }
 }
 

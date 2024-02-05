@@ -40,6 +40,10 @@
     <None Remove="Repositories\GenericRepository\" />
     <None Remove="Repositories\UserProfileRepository\" />
     <None Remove="Services\UserProfileService\" />
+    <None Remove="Repositories\PostsRepository\" />
+    <None Remove="Services\PostsService\" />
+    <None Remove="Repositories\CommentsRepository\" />
+    <None Remove="Services\CommentsService\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -58,5 +62,9 @@
     <Folder Include="Repositories\GenericRepository\" />
     <Folder Include="Repositories\UserProfileRepository\" />
     <Folder Include="Services\UserProfileService\" />
+    <Folder Include="Repositories\PostsRepository\" />
+    <Folder Include="Services\PostsService\" />
+    <Folder Include="Repositories\CommentsRepository\" />
+    <Folder Include="Services\CommentsService\" />
   </ItemGroup>
 </Project>

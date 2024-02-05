@@ -211,7 +211,7 @@ namespace Project.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LastName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    DisplayedUsername = table.Column<string>(type: "longtext", nullable: false)
+                    DisplayedUsername = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -257,15 +257,18 @@ namespace Project.Migrations
                 name: "Comments",
                 columns: table => new
                 {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     UserProfileId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     PostId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     Text = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CreatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    CreatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DateCreated = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    DateModified = table.Column<DateTime>(type: "datetime(6)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comments", x => new { x.UserProfileId, x.PostId });
+                    table.PrimaryKey("PK_Comments", x => new { x.UserProfileId, x.PostId, x.Id });
                     table.ForeignKey(
                         name: "FK_Comments_Posts_PostId",
                         column: x => x.PostId,
@@ -286,9 +289,9 @@ namespace Project.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "29d2228e-f4ad-47b0-99fe-1291f4ce6ea0", "3", "HR", "HR" },
-                    { "3766f3c3-3d24-470d-a001-547bdda6a206", "2", "User", "User" },
-                    { "f7af1a29-b696-4ade-b2a6-676c0ce67d54", "1", "Admin", "Admin" }
+                    { "65d2406f-d8a4-44ea-b8e5-9771b7e26ae3", "1", "Admin", "Admin" },
+                    { "752c5367-ad91-496c-b2be-90e053fa5638", "2", "User", "User" },
+                    { "984cb28b-b20c-44f9-940b-8a039975363d", "3", "HR", "HR" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -337,6 +340,12 @@ namespace Project.Migrations
                 name: "IX_Posts_UserProfileId",
                 table: "Posts",
                 column: "UserProfileId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserProfiles_DisplayedUsername",
+                table: "UserProfiles",
+                column: "DisplayedUsername",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserProfiles_UserId",

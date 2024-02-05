@@ -1,5 +1,4 @@
-﻿using Project.Data;
-using Project.Models.AppModels;
+﻿using Project.Models.AppModels;
 using Project.Repositories.UserProfileRepository;
 
 namespace Project.Services.UserProfileService
@@ -71,6 +70,18 @@ namespace Project.Services.UserProfileService
 
             return true;
         }
+
+        public async Task<bool> DeleteProfile(string DisName_or_Id)
+        {
+            var user = await _userProfileRepository.GetUserProfile(DisName_or_Id);
+
+            if (user == null)
+                return false;
+            _userProfileRepository.Delete(user);
+            await _userProfileRepository.SaveAsync();
+            return true;
+        }
+
 
     }
 }
