@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project.Data;
 
@@ -10,9 +11,11 @@ using Project.Data;
 namespace Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240205173949_FirstCreate")]
+    partial class FirstCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,21 +50,21 @@ namespace Project.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "96dfd7a3-3c6c-4d18-a319-7aafe15f81ac",
+                            Id = "f7af1a29-b696-4ade-b2a6-676c0ce67d54",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "e6ea9c18-48bd-4153-bce0-97408212e119",
+                            Id = "3766f3c3-3d24-470d-a001-547bdda6a206",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "User"
                         },
                         new
                         {
-                            Id = "4b9709ab-df7f-40a0-bb2c-1a0e46e1229d",
+                            Id = "29d2228e-f4ad-47b0-99fe-1291f4ce6ea0",
                             ConcurrencyStamp = "3",
                             Name = "HR",
                             NormalizedName = "HR"
@@ -213,7 +216,7 @@ namespace Project.Migrations
 
                     b.Property<string>("DisplayedUsername")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("longtext");
@@ -226,9 +229,6 @@ namespace Project.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DisplayedUsername")
-                        .IsUnique();
 
                     b.HasIndex("UserId")
                         .IsUnique();

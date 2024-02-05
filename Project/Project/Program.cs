@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Project.Data;
+using Project.Helpers.Extensions;
+using Project.Models;
 using Project.Models.Email;
 using Project.Services.EmailService;
 using Project.Services.TokenService;
@@ -57,7 +59,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connecti
 
 //For identity
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<User, IdentityRole>()
         .AddEntityFrameworkStores<AppDbContext>()
         .AddDefaultTokenProviders();
         //.AddTokenProvider("MyApp", typeof(DataProtectorTokenProvider<IdentityUser>));
@@ -106,6 +108,10 @@ builder.Services.AddSingleton(emailConfig);
 builder.Services.AddScoped<IEmailService, EmailService>();
 
 builder.Services.AddTransient<ITokenService, TokenService>();
+
+
+builder.Services.AddRepositories();
+builder.Services.AddServices();
 
 var app = builder.Build();
 

@@ -33,6 +33,13 @@
     <None Remove="Services\EmailService\" />
     <None Remove="Models\Base\" />
     <None Remove="Services\TokenService\" />
+    <None Remove="Models\AppModels\" />
+    <None Remove="Helpers\" />
+    <None Remove="Helpers\Extensions\" />
+    <None Remove="Repositories\" />
+    <None Remove="Repositories\GenericRepository\" />
+    <None Remove="Repositories\UserProfileRepository\" />
+    <None Remove="Services\UserProfileService\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -44,5 +51,12 @@
     <Folder Include="Services\EmailService\" />
     <Folder Include="Models\Base\" />
     <Folder Include="Services\TokenService\" />
+    <Folder Include="Models\AppModels\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Helpers\Extensions\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Repositories\GenericRepository\" />
+    <Folder Include="Repositories\UserProfileRepository\" />
+    <Folder Include="Services\UserProfileService\" />
   </ItemGroup>
 </Project>

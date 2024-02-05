@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Project.Data;
 using Microsoft.EntityFrameworkCore;
+using Project.Models;
 
 namespace Project.Services.TokenService
 {

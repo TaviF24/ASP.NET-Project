@@ -18,13 +18,13 @@ namespace Project.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailService _emailService;
         private readonly ITokenService _tokenService;
 
-        public AuthenticationController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IEmailService emailService, ITokenService tokenService, IConfiguration configuration, SignInManager<IdentityUser> signInManager)
+        public AuthenticationController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IEmailService emailService, ITokenService tokenService, SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -67,7 +67,7 @@ namespace Project.Controllers
 
             //Add the user in the database
 
-            IdentityUser user = new()
+            User user = new()
             {
                 Email = registerUserModel.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
@@ -148,7 +148,7 @@ namespace Project.Controllers
 
             var user_name = await _userManager.FindByNameAsync(loginModel.Username_or_Email);
             var user_email = await _userManager.FindByEmailAsync(loginModel.Username_or_Email);
-            IdentityUser user;
+            User user;
             if (user_name != null || user_email != null)
             {
                 if (user_name != null)
@@ -184,7 +184,7 @@ namespace Project.Controllers
         {
             var user_name = await _userManager.FindByNameAsync(Username_or_Email);
             var user_email = await _userManager.FindByEmailAsync(Username_or_Email);
-            IdentityUser user;
+            User user;
             if(user_name == null && user_email ==null)
                 return StatusCode(StatusCodes.Status404NotFound,
                         new Response { Status = "Error", Message = "User not found!" });
