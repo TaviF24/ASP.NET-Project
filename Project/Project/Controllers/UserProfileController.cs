@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Project.Models;
@@ -20,7 +22,7 @@ namespace Project.Controllers
             _userProfileService = userProfileService;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "User")]
         [Route("GetUserPosts")]
 
         public async Task<IActionResult> GetUserPosts(string DisplayedUsername)
@@ -28,7 +30,7 @@ namespace Project.Controllers
             return Ok(await _userProfileService.GetUserPosts(DisplayedUsername));
         }
 
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "User")]
         [Route("GetUserComments")]
         public async Task<IActionResult> GetUserComments(string DisplayedUsername)
         {
@@ -36,7 +38,7 @@ namespace Project.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "User")]
         [Route("CreateProfile")]
         public async Task<IActionResult> CreateUserProfile(string Email, string DisplayedUserName, string? FirstName, string? LastName)
         {
@@ -47,7 +49,7 @@ namespace Project.Controllers
                 new Response { Status = "Error", Message = "Error" });
         }
 
-        [HttpPut]
+        [HttpPut, Authorize(Roles = "User")]
         [Route("UpdateProfile")]
         public async Task<IActionResult> UpdateProfile(string DisplayedUserName_or_Id, string newDisplayedUserName, string newFirstName, string newLastName)
         {
@@ -59,7 +61,7 @@ namespace Project.Controllers
         }
 
 
-        [HttpDelete]
+        [HttpDelete, Authorize(Roles = "User")]
         [Route("DeleteProfile")]
         public async Task<IActionResult> DeleteProfile(string DisplayedUserName_or_Id)
         {

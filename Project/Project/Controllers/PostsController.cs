@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using Project.Models;
 using Project.Services.PostsService;
@@ -15,7 +17,7 @@ namespace Project.Controllers
             _postsService = postsService;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "User")]
         [Route("GetFirst3UsersPost")]
 
         public async Task<IActionResult> GetFirst3UsersPost()
@@ -24,7 +26,7 @@ namespace Project.Controllers
             
         }
 
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "User")]
         [Route("GetAllPosts")]
         public async Task<IActionResult> GetAllPosts()
         {
@@ -32,7 +34,7 @@ namespace Project.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "User")]
         [Route("CreatePost")]
         public async Task<IActionResult> CreatePost(string DisName_or_Id, string text)
         {
@@ -43,7 +45,7 @@ namespace Project.Controllers
                 new Response { Status = "Error", Message = "Error" });
         }
 
-        [HttpPut]
+        [HttpPut, Authorize(Roles = "User")]
         [Route("UpdatePost")]
         public async Task<IActionResult> UpdatePost(Guid postId, string text)
         {
@@ -55,7 +57,7 @@ namespace Project.Controllers
         }
 
 
-        [HttpDelete]
+        [HttpDelete, Authorize(Roles = "User")]
         [Route("DeletePost")]
         public async Task<IActionResult> DeletePost(Guid postId)
         {

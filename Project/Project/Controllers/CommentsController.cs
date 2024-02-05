@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using Project.Models;
 using Project.Services.CommentsService;
@@ -17,7 +19,7 @@ namespace Project.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "User")]
         [Route("GetAllComments")]
         public IActionResult GetAllComments()
         {
@@ -25,7 +27,7 @@ namespace Project.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "User")]
         [Route("CreateComment")]
         public async Task<IActionResult> CreateComment(string DisName_or_Id, Guid postId, string text)
         {
@@ -36,7 +38,7 @@ namespace Project.Controllers
                 new Response { Status = "Error", Message = "Error" });
         }
 
-        [HttpPut]
+        [HttpPut, Authorize(Roles = "User")]
         [Route("UpdateComment")]
         public async Task<IActionResult> UpdateComment(Guid commentId, string text)
         {
@@ -48,7 +50,7 @@ namespace Project.Controllers
         }
 
 
-        [HttpDelete]
+        [HttpDelete, Authorize(Roles = "User")]
         [Route("DeleteComment")]
         public async Task<IActionResult> DeleteComment(Guid commId)
         {
