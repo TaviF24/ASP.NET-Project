@@ -13,7 +13,6 @@ namespace Project.Services.CommentsService
         public Task<bool> UpdateComm(Guid commId, string text)
         ;
 
-
         public Task<bool> DeleteComm(Guid commId)
         ;
     }

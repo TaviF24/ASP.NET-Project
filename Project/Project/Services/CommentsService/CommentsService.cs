@@ -7,6 +7,11 @@ namespace Project.Services.CommentsService
 	{
 		public ICommentsRepository _commentsRepository;
 
+        public CommentsService(ICommentsRepository commentsRepository)
+        {
+            _commentsRepository = commentsRepository;
+        }
+
         public List<Comments> GetAllComm()
         {
             return _commentsRepository.GetComments();
@@ -32,7 +37,7 @@ namespace Project.Services.CommentsService
 
         public async Task<bool> UpdateComm(Guid commId, string text)
         {
-            var comm = await _commentsRepository.FindByIdAsync(commId);
+            var comm = await _commentsRepository.GetCommentByCommId(commId);
             if (comm == null)
                 return false;
             if (comm.Text != text)

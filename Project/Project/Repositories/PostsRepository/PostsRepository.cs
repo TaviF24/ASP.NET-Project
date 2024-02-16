@@ -11,13 +11,13 @@ namespace Project.Repositories.PostsRepository
 
         public async Task<string> GetFirst3UsersPosts()
         {
-            var postsGrouped = from s in _table
-                               orderby s.DateCreated
-                               group s by s.UserProfileId;
+            var postsGrouped = await ( from s in _table
+                                       orderby s.DateCreated
+                                       group s by s.UserProfileId).ToListAsync();
             var author = string.Empty;
             string res = string.Empty;
             int cnt_usr = 3;
-            foreach(var post in postsGrouped)
+            foreach (var post in postsGrouped)
             {
                 if (post == null)
                     continue;
@@ -27,7 +27,9 @@ namespace Project.Repositories.PostsRepository
                 string posts = string.Empty;
                 int cnt_post = 3;
 
-                author = (await _appDbContext.UserProfiles.FirstOrDefaultAsync(x => x.Id == post.Key)).DisplayedUsername;
+                var v = await _appDbContext.UserProfiles.FirstOrDefaultAsync(x => x.Id == post.Key);
+                if (v != null)
+                    author = v.DisplayedUsername;
 
                 foreach (var p in post)
                 {
@@ -35,9 +37,10 @@ namespace Project.Repositories.PostsRepository
                         break;
 
                     cnt_post--;
-                    posts += p.Text + "\n";
+                    posts += "- "+p.Text + "\n\n";
                 }
-                res += $"Author : {author} \n Posts : {posts}\n\n";
+                res += $"Author : {author} \nPosts : \n{posts}\n\n";
+            
             }
 
             return res;          

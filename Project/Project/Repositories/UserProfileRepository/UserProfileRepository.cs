@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Project.Data;
 using Project.Models.AppModels;
+using Project.Models.DTOs;
 using Project.Repositories.GenericRepository;
 
 namespace Project.Repositories.UserProfileRepository
@@ -10,31 +11,63 @@ namespace Project.Repositories.UserProfileRepository
         public UserProfileRepository(AppDbContext appDbContext) : base(appDbContext) { }
 
 
-        public async Task<List<Posts>> GetAllUserPosts_Join(Guid userId)
+        public async Task<List<PostsDTO>> GetAllUserPosts_Join(Guid userId)
         {
             var user = await _table.FirstOrDefaultAsync(x => x.Id == userId);
 
-            if (user != null)
+            //if (user != null)
+            //{
+                var posts_users = await _appDbContext.Posts.Join(_appDbContext.UserProfiles, p => p.UserProfileId, u => u.Id,
+                    (p, u) => new { p, u }).Where(s => s.u.UserId == user.UserId)
+            .Select(s => new PostsDTO
             {
-                var posts_users = _appDbContext.Posts.Join(_appDbContext.UserProfiles, p => p.UserProfileId, u => u.Id,
-                    (p, u) => new { p, u });//.Select(ob => ob.p).ToList();
-                var res = from s in posts_users
-                          where s.u.UserId == user.UserId
-                          select s.p;
-
-                return res.ToList();
-            }
-            return null;
+                Id = s.p.Id,
+                Text = s.p.Text,
+                
+            })
+            .ToListAsync();
+                //.Select(ob => ob.p).ToList();
+                //var res = from s in posts_users
+                //          where s.u.UserId == user.UserId
+                //          select s.p;
+                //var l = await res.ToListAsync();
+                //Console.WriteLine(res.ToList()[0]);
+                return posts_users;
+            //}
+            //return null;
         }
 
-        public async Task<List<Comments>> GetAllUserComm_Include(Guid userId)
+        public async Task<List<CommentsDTO>> GetAllUserComm_Include(Guid userId)
         {
             var user = await _table.FirstOrDefaultAsync(x => x.Id == userId);
-
+            
             if(user != null)
             {
-                var result = _appDbContext.Comments.Include(c => c.UserProfileId == user.Id).ToList();
-                return result;
+                var comments = await _appDbContext.Comments
+                .Include(c => c.UserProfile)
+                .Where(c => c.UserProfile.UserId == user.UserId)
+                .Select(c => new CommentsDTO
+                {
+                    Id = c.Id,
+                    Text = c.Text,
+                    // Map other properties as needed
+                })
+                .ToListAsync();
+
+                return comments;
+
+                ////var result = _table.Include(c => c.Posts.Where(x => x.Comments.Count==0));
+                //var result = _appDbContext.Comments.Include(c => c.UserProfile);
+                ///*
+                //List<Comments> res = new List<Comments>();
+                //foreach(var v in result)
+                //{
+                //    res.Add(v);
+                //}
+                //*/
+                //return result.ToList();
+
+
             }
 
             return null;

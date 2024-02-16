@@ -120,6 +120,12 @@ namespace Project.Repositories.GenericRepository
             return userProfile;
 
         }
+
+        //public async Task<Comments> GetCommentsByCommIdAsync(Guid Id)
+        //{
+        //    return await _appDbContext.Comments.FirstOrDefaultAsync(comm => comm.Id == Id);
+        //}
+
     }
 }
 

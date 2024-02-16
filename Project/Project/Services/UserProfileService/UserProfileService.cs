@@ -1,4 +1,5 @@
 ﻿using Project.Models.AppModels;
+using Project.Models.DTOs;
 using Project.Repositories.UserProfileRepository;
 
 namespace Project.Services.UserProfileService
@@ -38,7 +39,7 @@ namespace Project.Services.UserProfileService
             return true;
         }
 
-        public async Task<List<Posts>> GetUserPosts(string Username)
+        public async Task<List<PostsDTO>> GetUserPosts(string Username)
         {
             var user = await _userProfileRepository.GetUserProfile(Username);
             if(user != null)
@@ -46,10 +47,10 @@ namespace Project.Services.UserProfileService
             return null;
         }
 
-        public async Task<List<Comments>> GetUserComments(string Username)
+        public async Task<List<CommentsDTO>> GetUserComments(string Username)
         {
             var user = await _userProfileRepository.GetUserProfile(Username);
-            if (user != null)
+            if (user != null) 
                 return await _userProfileRepository.GetAllUserComm_Include(user.Id);
             return null;
         }

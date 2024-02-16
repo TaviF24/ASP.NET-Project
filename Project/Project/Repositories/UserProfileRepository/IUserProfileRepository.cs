@@ -1,4 +1,5 @@
 ﻿using Project.Models.AppModels;
+using Project.Models.DTOs;
 using Project.Repositories.GenericRepository;
 
 namespace Project.Repositories.UserProfileRepository
@@ -9,9 +10,9 @@ namespace Project.Repositories.UserProfileRepository
 		  Folosirea metodelor din Linq: GroupBy, Where, etc; Folosirea Join si Include (1p)
 		*/
 
-		public Task<List<Posts>> GetAllUserPosts_Join(Guid userId);
+		public Task<List<PostsDTO>> GetAllUserPosts_Join(Guid userId);
 
-		public Task<List<Comments>> GetAllUserComm_Include(Guid userId);
+		public Task<List<CommentsDTO>> GetAllUserComm_Include(Guid userId);
 
 		public Task<string> CheckUser(string email);
 

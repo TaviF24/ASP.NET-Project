@@ -44,6 +44,8 @@
     <None Remove="Services\PostsService\" />
     <None Remove="Repositories\CommentsRepository\" />
     <None Remove="Services\CommentsService\" />
+    <None Remove="Repositories\AdminRepository\" />
+    <None Remove="Models\DTOs\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -66,5 +68,7 @@
     <Folder Include="Services\PostsService\" />
     <Folder Include="Repositories\CommentsRepository\" />
     <Folder Include="Services\CommentsService\" />
+    <Folder Include="Repositories\AdminRepository\" />
+    <Folder Include="Models\DTOs\" />
   </ItemGroup>
 </Project>

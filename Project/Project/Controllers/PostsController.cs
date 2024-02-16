@@ -17,8 +17,8 @@ namespace Project.Controllers
             _postsService = postsService;
         }
 
-        [HttpGet, Authorize(Roles = "User")]
-        [Route("GetFirst3UsersPost")]
+        [HttpGet]
+        [Route("GetFirst3UsersPost"), Authorize(Roles = "User")]
 
         public async Task<IActionResult> GetFirst3UsersPost()
         {
@@ -26,16 +26,16 @@ namespace Project.Controllers
             
         }
 
-        [HttpGet, Authorize(Roles = "User")]
-        [Route("GetAllPosts")]
+        [HttpGet]
+        [Route("GetAllPosts"), Authorize(Roles = "User")]
         public async Task<IActionResult> GetAllPosts()
         {
             return Ok(await _postsService.GetAllPosts());
         }
 
 
-        [HttpPost, Authorize(Roles = "User")]
-        [Route("CreatePost")]
+        [HttpPost]
+        [Route("CreatePost"), Authorize(Roles = "User")]
         public async Task<IActionResult> CreatePost(string DisName_or_Id, string text)
         {
             if (await _postsService.CreatePost(DisName_or_Id,text) == true)
@@ -45,8 +45,8 @@ namespace Project.Controllers
                 new Response { Status = "Error", Message = "Error" });
         }
 
-        [HttpPut, Authorize(Roles = "User")]
-        [Route("UpdatePost")]
+        [HttpPut]
+        [Route("UpdatePost"), Authorize(Roles = "User")]
         public async Task<IActionResult> UpdatePost(Guid postId, string text)
         {
             if (await _postsService.UpdatePost(postId,text) == true)
@@ -57,8 +57,8 @@ namespace Project.Controllers
         }
 
 
-        [HttpDelete, Authorize(Roles = "User")]
-        [Route("DeletePost")]
+        [HttpDelete]
+        [Route("DeletePost"), Authorize(Roles = "User")]
         public async Task<IActionResult> DeletePost(Guid postId)
         {
             if (await _postsService.DeletePost(postId) == true)

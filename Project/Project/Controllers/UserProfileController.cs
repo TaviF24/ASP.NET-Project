@@ -22,24 +22,24 @@ namespace Project.Controllers
             _userProfileService = userProfileService;
         }
 
-        [HttpGet, Authorize(Roles = "User")]
-        [Route("GetUserPosts")]
+        [HttpGet]
+        [Route("GetUserPosts"), Authorize(Roles = "User")]
 
         public async Task<IActionResult> GetUserPosts(string DisplayedUsername)
         {
             return Ok(await _userProfileService.GetUserPosts(DisplayedUsername));
         }
 
-        [HttpGet, Authorize(Roles = "User")]
-        [Route("GetUserComments")]
+        [HttpGet]
+        [Route("GetUserComments"), Authorize(Roles = "User")]
         public async Task<IActionResult> GetUserComments(string DisplayedUsername)
         {
             return Ok(await _userProfileService.GetUserComments(DisplayedUsername));
         }
 
 
-        [HttpPost, Authorize(Roles = "User")]
-        [Route("CreateProfile")]
+        [HttpPost]
+        [Route("CreateProfile"), Authorize(Roles = "User")]
         public async Task<IActionResult> CreateUserProfile(string Email, string DisplayedUserName, string? FirstName, string? LastName)
         {
             if (await _userProfileService.CreateProfile(Email, DisplayedUserName, FirstName, LastName) == true)
@@ -49,8 +49,8 @@ namespace Project.Controllers
                 new Response { Status = "Error", Message = "Error" });
         }
 
-        [HttpPut, Authorize(Roles = "User")]
-        [Route("UpdateProfile")]
+        [HttpPut]
+        [Route("UpdateProfile"), Authorize(Roles = "User")]
         public async Task<IActionResult> UpdateProfile(string DisplayedUserName_or_Id, string newDisplayedUserName, string newFirstName, string newLastName)
         {
             if (await _userProfileService.UpdateProfile(DisplayedUserName_or_Id, newDisplayedUserName, newFirstName, newLastName) == true)
@@ -61,8 +61,8 @@ namespace Project.Controllers
         }
 
 
-        [HttpDelete, Authorize(Roles = "User")]
-        [Route("DeleteProfile")]
+        [HttpDelete]
+        [Route("DeleteProfile"), Authorize(Roles = "User")]
         public async Task<IActionResult> DeleteProfile(string DisplayedUserName_or_Id)
         {
             if (await _userProfileService.DeleteProfile(DisplayedUserName_or_Id) == true)

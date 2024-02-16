@@ -1,31 +1,40 @@
 ﻿<Properties StartupConfiguration="{85B32694-6620-47DC-A088-E2D12DA33D3E}|https">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.Project PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Project/Services/TokenService/TokenService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Project/Repositories/CommentsRepository/CommentsRepository.cs">
     <Files>
-      <File FileName="Project/Data/AppDbContext.cs" Line="3" Column="37" />
-      <File FileName="Project/Models/Authentication/Login/LoginUserModel.cs" Line="1" Column="1" />
-      <File FileName="Project/Controllers/AuthenticationController.cs" Line="312" Column="1" />
-      <File FileName="Project/Services/TokenService/ITokenService.cs" Line="20" Column="2" />
-      <File FileName="Project/Services/TokenService/TokenService.cs" Line="77" Column="53" />
-      <File FileName="Project/Program.cs" Line="74" Column="1" />
+      <File FileName="Project/Controllers/PostsController.cs" Line="19" Column="1" />
+      <File FileName="Project/Controllers/CommentsController.cs" Line="12" Column="6" />
+      <File FileName="Project/Controllers/UserProfileController.cs" Line="25" Column="17" />
+      <File FileName="Project/Services/UserProfileService/UserProfileService.cs" Line="49" Column="40" />
+      <File FileName="Project/Services/UserProfileService/IUserProfileService.cs" Line="11" Column="34" />
+      <File FileName="Project/Repositories/UserProfileRepository/UserProfileRepository.cs" Line="30" Column="40" />
+      <File FileName="Project/Repositories/UserProfileRepository/IUserProfileRepository.cs" Line="14" Column="28" />
+      <File FileName="Project/Services/CommentsService/CommentsService.cs" Line="28" Column="38" />
+      <File FileName="Project/Repositories/CommentsRepository/CommentsRepository.cs" Line="28" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Project">
             <Node name="Project">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Data" expanded="True" />
+              <Node name="Repositories">
+                <Node name="CommentsRepository">
+                  <Node name="CommentsRepository.cs" selected="True" />
+                </Node>
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

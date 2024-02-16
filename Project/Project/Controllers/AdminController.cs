@@ -8,11 +8,15 @@ namespace Project.Controllers
     public class AdminController : ControllerBase
     {
 
+
+
         [HttpGet("employees"),Authorize(Roles = "Admin")]
         public IEnumerable<string> Get()
         {
             return new List<string> { "User1", "User2", "User3"};
         }
+
+
 
     }
 }

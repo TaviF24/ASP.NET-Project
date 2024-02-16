@@ -56,7 +56,11 @@ namespace Project.Repositories.GenericRepository
         Task<bool> SaveAsync();
 
 
+
+
         public Task<UserProfile> GetUserProfile(string Id_or_disName);
+
+        //public Task<Comments> GetCommentsByCommIdAsync(Guid Id);
 
     }
     
